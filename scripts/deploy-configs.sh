@@ -104,6 +104,12 @@ echo "Configuring SDDM theme..."
 if [ -f "$CONFIG_DIR/sddm/sddm.conf" ]; then
     sudo cp "$CONFIG_DIR/sddm/sddm.conf" /etc/sddm.conf
     echo "✓ SDDM theme configured (Sugar Candy)"
+    
+    # Link wallpaper for SDDM theme
+    if [ -f "$HOME/Pictures/Wallpapers/dragon.png" ] && [ -d "/usr/share/sddm/themes/sugar-candy" ]; then
+        sudo cp "$HOME/Pictures/Wallpapers/dragon.png" /usr/share/sddm/themes/sugar-candy/Background.jpg
+        echo "✓ Wallpaper linked to SDDM theme"
+    fi
 fi
 
 # Clone Neovim configuration
