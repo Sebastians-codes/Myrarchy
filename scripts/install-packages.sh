@@ -66,7 +66,7 @@ paru -S --needed --noconfirm \
     wlogout \
     wofi \
     walker \
-    hyprsunset-git \
+    hyprsunset \
     grimblast-git \
     wf-recorder-git \
     bluetuith-bin \
