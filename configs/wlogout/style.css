@@ -1,0 +1,33 @@
+* {
+    font-family: "JetBrains Mono", monospace;
+    background-image: none;
+}
+
+window {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+button {
+    color: #cdcdcd;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #1b1c1d;
+    border: 3px solid #d2788c;
+    border-radius: 15px;
+    margin: 10px;
+    padding: 20px 40px;
+    min-width: 200px;
+    min-height: 70px;
+}
+
+button:hover {
+    background-color: #d2788c;
+    color: #000000;
+    border-color: #d2788c;
+}
+
+button:focus {
+    background-color: #d2788c;
+    color: #000000;
+    border-color: #d2788c;
+}
