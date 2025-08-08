@@ -115,10 +115,16 @@ echo "=================="
 # Enable essential services
 echo "Enabling essential services..."
 sudo systemctl enable NetworkManager
+sudo systemctl enable iwd
 sudo systemctl enable bluetooth
 sudo systemctl enable sddm
 sudo systemctl enable ufw
 sudo systemctl enable power-profiles-daemon
+
+# Enable UFW firewall
+echo "Enabling UFW firewall..."
+sudo ufw --force enable
+echo "✓ UFW firewall enabled"
 
 echo "Services enabled successfully!"
 

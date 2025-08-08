@@ -1,0 +1,192 @@
+@define-color foreground #cdcdcd;
+@define-color background rgba(0, 0, 0, 0.7);
+@define-color background_light #1b1c1d;
+@define-color background_medium #2d2d30;
+@define-color text_highlight #be8c8c;
+@define-color accent #deb896;
+@define-color border #5c5c6e;
+@define-color selection #be8c8c;
+
+#window,
+#box,
+#aiScroll,
+#aiList,
+#search,
+#password,
+#input,
+#prompt,
+#clear,
+#typeahead,
+#list,
+child,
+scrollbar,
+slider,
+#item,
+#text,
+#label,
+#bar,
+#sub,
+#activationlabel {
+  all: unset;
+}
+
+#cfgerr {
+  background: rgba(210, 120, 140, 0.4);
+  margin-top: 20px;
+  padding: 8px;
+  font-size: 1.2em;
+}
+
+#window {
+  color: @foreground;
+  background: transparent;
+  backdrop-filter: blur(10px);
+}
+
+#box {
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 24px;
+  border: 2px solid #be8c8c;
+  box-shadow:
+    0 19px 38px rgba(0, 0, 0, 0.5),
+    0 15px 12px rgba(0, 0, 0, 0.3);
+}
+
+#search {
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    0 1px 2px rgba(0, 0, 0, 0.3);
+  background: @background_medium;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid @border;
+}
+
+#prompt {
+  margin-left: 6px;
+  margin-right: 12px;
+  color: @text_highlight;
+  opacity: 0.8;
+  font-weight: 600;
+}
+
+#clear {
+  color: @foreground;
+  opacity: 0.8;
+}
+
+#password,
+#input,
+#typeahead {
+  border-radius: 4px;
+}
+
+#input {
+  background: none;
+  color: @foreground;
+  font-weight: 500;
+}
+
+#password {
+  color: @foreground;
+}
+
+#spinner {
+  padding: 8px;
+}
+
+#typeahead {
+  color: @accent;
+  opacity: 0.6;
+}
+
+#input placeholder {
+  opacity: 0.5;
+  color: @border;
+}
+
+#list {
+  margin-top: 12px;
+}
+
+child {
+  padding: 10px 12px;
+  border-radius: 6px;
+  margin: 2px 0;
+}
+
+child:selected,
+child:hover {
+  background: @background_medium;
+  border: 1px solid @selection;
+}
+
+child:selected #label {
+  color: @selection;
+  font-weight: 600;
+}
+
+#item {
+}
+
+#icon {
+  margin-right: 12px;
+  opacity: 0.9;
+}
+
+#text {
+  color: @foreground;
+}
+
+#label {
+  font-weight: 500;
+  color: @foreground;
+}
+
+#sub {
+  opacity: 0.6;
+  font-size: 0.85em;
+  color: @border;
+}
+
+#activationlabel {
+  color: @accent;
+  font-weight: bold;
+}
+
+#bar {
+}
+
+.barentry {
+}
+
+.activation #activationlabel {
+  color: @accent;
+}
+
+.activation #text,
+.activation #icon,
+.activation #search {
+  opacity: 0.4;
+}
+
+.aiItem {
+  padding: 12px;
+  border-radius: 6px;
+  color: @foreground;
+  background: @background_light;
+  border: 1px solid @border;
+  margin: 4px 0;
+}
+
+.aiItem.user {
+  padding-left: 8px;
+  padding-right: 8px;
+  background: @background_medium;
+}
+
+.aiItem.assistant {
+  background: @background_light;
+  border-color: @text_highlight;
+}

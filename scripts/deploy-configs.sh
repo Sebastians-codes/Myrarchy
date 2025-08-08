@@ -77,6 +77,9 @@ deploy_config "$CONFIG_DIR/gtk-3.0" "$HOME/.config/gtk-3.0"
 # Deploy Kanata configs
 deploy_config "$CONFIG_DIR/kanata" "$HOME/.config/kanata"
 
+# Deploy Walker configs
+deploy_config "$CONFIG_DIR/walker" "$HOME/.config/walker"
+
 # Deploy systemd user services
 deploy_config "$CONFIG_DIR/systemd/user" "$HOME/.config/systemd/user"
 
@@ -95,6 +98,22 @@ if [ -f "$HOME/.config/waybar/system-stats.sh" ]; then
     chmod +x "$HOME/.config/waybar/system-stats.sh"
     echo "✓ Waybar system stats script made executable"
 fi
+
+# Deploy SDDM theme configuration
+echo "Configuring SDDM theme..."
+if [ -f "$CONFIG_DIR/sddm/sddm.conf" ]; then
+    sudo cp "$CONFIG_DIR/sddm/sddm.conf" /etc/sddm.conf
+    echo "✓ SDDM theme configured (Sugar Candy)"
+fi
+
+# Clone Neovim configuration
+echo "Setting up Neovim configuration..."
+if [ -d "$HOME/.config/nvim" ]; then
+    echo "Backing up existing Neovim config..."
+    mv "$HOME/.config/nvim" "$HOME/.config/nvim.backup.$(date +%Y%m%d_%H%M%S)"
+fi
+git clone https://github.com/sebastians-codes/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+echo "✓ Neovim configuration cloned from kickstart.nvim"
 
 # Enable and start systemd user services
 echo "Enabling systemd user services..."
