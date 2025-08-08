@@ -14,15 +14,6 @@ SETUP_DIR="$(dirname "$SCRIPT_DIR")"
 CONFIG_DIR="$SETUP_DIR/configs"
 WALLPAPER_DIR="$SETUP_DIR/wallpapers"
 
-# Function to backup existing configs
-backup_config() {
-    local config_path="$1"
-    if [ -d "$config_path" ] || [ -f "$config_path" ]; then
-        echo "Backing up existing $config_path..."
-        mv "$config_path" "${config_path}.backup.$(date +%Y%m%d_%H%M%S)"
-    fi
-}
-
 # Function to deploy config directory
 deploy_config() {
     local source_dir="$1"
@@ -30,7 +21,6 @@ deploy_config() {
     
     if [ -d "$source_dir" ]; then
         echo "Deploying $(basename "$source_dir") configuration..."
-        backup_config "$target_dir"
         mkdir -p "$(dirname "$target_dir")"
         cp -r "$source_dir" "$target_dir"
         echo "✓ $(basename "$source_dir") configuration deployed"
@@ -105,21 +95,17 @@ if [ -f "$CONFIG_DIR/sddm/sddm.conf" ]; then
     sudo cp "$CONFIG_DIR/sddm/sddm.conf" /etc/sddm.conf
     echo "✓ SDDM theme configured (Sugar Candy)"
     
-    # Replace mountain.png with dragon.png in SDDM theme
-    if [ -f "$HOME/Pictures/Wallpapers/dragon.png" ] && [ -d "/usr/share/sddm/themes/Sugar-Candy" ]; then
-        sudo cp "$HOME/Pictures/Wallpapers/dragon.png" /usr/share/sddm/themes/Sugar-Candy/
-        sudo rm -f /usr/share/sddm/themes/Sugar-Candy/mountain.png
-        sudo mv /usr/share/sddm/themes/Sugar-Candy/dragon.png /usr/share/sddm/themes/Sugar-Candy/mountain.png
-        echo "✓ Dragon wallpaper set as SDDM background (replaced mountain.png)"
+    # Replace Mountain.jpg with dragon.png in SDDM theme
+    if [ -f "$HOME/Pictures/Wallpapers/dragon.png" ] && [ -d "/usr/share/sddm/themes/Sugar-Candy/Backgrounds" ]; then
+        sudo cp "$HOME/Pictures/Wallpapers/dragon.png" /usr/share/sddm/themes/Sugar-Candy/Backgrounds/
+        sudo rm -f /usr/share/sddm/themes/Sugar-Candy/Backgrounds/Mountain.jpg
+        sudo mv /usr/share/sddm/themes/Sugar-Candy/Backgrounds/dragon.png /usr/share/sddm/themes/Sugar-Candy/Backgrounds/Mountain.jpg
+        echo "✓ Dragon wallpaper set as SDDM background (replaced Mountain.jpg)"
     fi
 fi
 
 # Clone Neovim configuration
 echo "Setting up Neovim configuration..."
-if [ -d "$HOME/.config/nvim" ]; then
-    echo "Backing up existing Neovim config..."
-    mv "$HOME/.config/nvim" "$HOME/.config/nvim.backup.$(date +%Y%m%d_%H%M%S)"
-fi
 git clone https://github.com/sebastians-codes/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 echo "✓ Neovim configuration cloned from kickstart.nvim"
 
