@@ -106,8 +106,8 @@ if [ -f "$CONFIG_DIR/sddm/sddm.conf" ]; then
     echo "✓ SDDM theme configured (Sugar Candy)"
     
     # Link wallpaper for SDDM theme
-    if [ -f "$HOME/Pictures/Wallpapers/dragon.png" ] && [ -d "/usr/share/sddm/themes/sugar-candy" ]; then
-        sudo cp "$HOME/Pictures/Wallpapers/dragon.png" /usr/share/sddm/themes/sugar-candy/Background.jpg
+    if [ -f "$HOME/Pictures/Wallpapers/dragon.png" ] && [ -d "/usr/share/sddm/themes/Sugar-Candy" ]; then
+        sudo cp "$HOME/Pictures/Wallpapers/dragon.png" /usr/share/sddm/themes/Sugar-Candy/Background.jpg
         echo "✓ Wallpaper linked to SDDM theme"
     fi
 fi
