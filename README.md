@@ -31,6 +31,7 @@ cd hyprland-setup
 - **Neovim** - Text editor
 - **Zellij** - Terminal multiplexer
 - **Btop** - System monitor
+- **Kanata** - Keyboard remapper (Caps Lock → Esc/Ctrl)
 
 ### Development Tools
 - Git & GitHub CLI

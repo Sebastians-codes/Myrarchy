@@ -74,6 +74,12 @@ deploy_config "$CONFIG_DIR/zellij" "$HOME/.config/zellij"
 # Deploy GTK3 configs
 deploy_config "$CONFIG_DIR/gtk-3.0" "$HOME/.config/gtk-3.0"
 
+# Deploy Kanata configs
+deploy_config "$CONFIG_DIR/kanata" "$HOME/.config/kanata"
+
+# Deploy systemd user services
+deploy_config "$CONFIG_DIR/systemd/user" "$HOME/.config/systemd/user"
+
 # Deploy wallpapers
 echo "Deploying wallpapers..."
 if [ -d "$WALLPAPER_DIR" ]; then
@@ -88,6 +94,15 @@ echo "Making scripts executable..."
 if [ -f "$HOME/.config/waybar/system-stats.sh" ]; then
     chmod +x "$HOME/.config/waybar/system-stats.sh"
     echo "✓ Waybar system stats script made executable"
+fi
+
+# Enable and start systemd user services
+echo "Enabling systemd user services..."
+if [ -f "$HOME/.config/systemd/user/kanata.service" ]; then
+    systemctl --user daemon-reload
+    systemctl --user enable kanata.service
+    systemctl --user start kanata.service
+    echo "✓ Kanata systemd service enabled and started"
 fi
 
 echo ""

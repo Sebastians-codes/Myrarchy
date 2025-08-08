@@ -135,6 +135,18 @@ sudo systemctl enable power-profiles-daemon
 
 echo "Services enabled successfully!"
 
+# Install kanata via cargo
+echo "Installing kanata via cargo..."
+if command -v cargo &> /dev/null; then
+    cargo install kanata --locked
+    echo "✓ Kanata installed via cargo"
+else
+    echo "Installing Rust and cargo first..."
+    rustup default stable
+    cargo install kanata --locked
+    echo "✓ Kanata installed via cargo"
+fi
+
 # Set Fish as default shell
 echo "Setting Fish as default shell..."
 if command -v fish &> /dev/null; then
