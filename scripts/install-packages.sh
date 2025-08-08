@@ -27,9 +27,9 @@ sudo pacman -Syu --noconfirm
 # Install paru if not present
 check_paru
 
-# Core system packages
-echo "Installing core system packages..."
-sudo pacman -S --needed --noconfirm \
+# Install all packages using paru (handles both official repos and AUR)
+echo "Installing all packages with paru..."
+paru -S --needed --noconfirm \
     base \
     base-devel \
     sbctl \
@@ -47,11 +47,7 @@ sudo pacman -S --needed --noconfirm \
     gst-plugins-base \
     gst-plugins-good \
     gst-plugins-bad \
-    gst-plugins-ugly
-
-# Hyprland and Wayland ecosystem
-echo "Installing Hyprland and Wayland components..."
-sudo pacman -S --needed --noconfirm \
+    gst-plugins-ugly \
     hyprland \
     hyprpaper \
     hyprlock \
@@ -65,11 +61,7 @@ sudo pacman -S --needed --noconfirm \
     slurp \
     wlogout \
     wofi \
-    walker
-
-# AUR packages
-echo "Installing AUR packages..."
-paru -S --needed --noconfirm \
+    walker \
     hyprsunset-git \
     grimblast-git \
     wf-recorder-git \
@@ -77,11 +69,7 @@ paru -S --needed --noconfirm \
     1password \
     zen-browser-bin \
     mullvad-vpn-bin \
-    sddm-theme-sugar-candy-git
-
-# Applications and tools
-echo "Installing applications and development tools..."
-sudo pacman -S --needed --noconfirm \
+    sddm-theme-sugar-candy-git \
     ghostty \
     fish \
     neovim \
@@ -110,11 +98,7 @@ sudo pacman -S --needed --noconfirm \
     unclutter \
     ufw \
     power-profiles-daemon \
-    sddm
-
-# Fonts
-echo "Installing fonts..."
-sudo pacman -S --needed --noconfirm \
+    sddm \
     noto-fonts \
     noto-fonts-emoji \
     noto-fonts-extra \
