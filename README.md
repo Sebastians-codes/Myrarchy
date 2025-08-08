@@ -5,7 +5,7 @@ A complete Hyprland desktop environment setup for Arch Linux with all configurat
 ## 🚀 Quick Start
 
 ```bash
-git clone <this-repo> hyprland-setup
+git clone https://github.com/Sebastians-codes/Myrarchy hyprland-setup
 cd hyprland-setup
 ./setup.sh
 ```
