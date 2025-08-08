@@ -12,6 +12,10 @@ echo "======================================"
 # Function to check if paru is installed
 check_paru() {
     if ! command -v paru &> /dev/null; then
+        echo "Installing rustup and configuring Rust toolchain..."
+        sudo pacman -S --needed --noconfirm rustup
+        rustup default stable
+        
         echo "Installing paru (AUR helper)..."
         git clone https://aur.archlinux.org/paru.git /tmp/paru
         cd /tmp/paru
@@ -77,7 +81,6 @@ paru -S --needed --noconfirm \
     github-cli \
     go \
     go-tools \
-    rustup \
     dotnet-sdk \
     npm \
     yazi \
