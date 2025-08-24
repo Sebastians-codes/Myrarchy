@@ -95,12 +95,21 @@ if [ -f "$CONFIG_DIR/sddm/sddm.conf" ]; then
     sudo cp "$CONFIG_DIR/sddm/sddm.conf" /etc/sddm.conf
     echo "✓ SDDM theme configured (Sugar Candy)"
     
-    # Replace Mountain.jpg with dragon.png in SDDM theme
-    if [ -f "$HOME/Pictures/Wallpapers/dragon.png" ] && [ -d "/usr/share/sddm/themes/Sugar-Candy/Backgrounds" ]; then
-        sudo cp "$HOME/Pictures/Wallpapers/dragon.png" /usr/share/sddm/themes/Sugar-Candy/Backgrounds/
-        sudo rm -f /usr/share/sddm/themes/Sugar-Candy/Backgrounds/Mountain.jpg
-        sudo mv /usr/share/sddm/themes/Sugar-Candy/Backgrounds/dragon.png /usr/share/sddm/themes/Sugar-Candy/Backgrounds/Mountain.jpg
-        echo "✓ Dragon wallpaper set as SDDM background (replaced Mountain.jpg)"
+    # Set dragon wallpaper for SDDM theme
+    if [ -f "$HOME/Pictures/Wallpapers/dragon.png" ] && [ -d "/usr/share/sddm/themes/Sugar-Candy" ]; then
+        # Create Backgrounds directory if it doesn't exist
+        sudo mkdir -p /usr/share/sddm/themes/Sugar-Candy/Backgrounds
+        
+        # Copy dragon wallpaper and set as background
+        sudo cp "$HOME/Pictures/Wallpapers/dragon.png" /usr/share/sddm/themes/Sugar-Candy/Backgrounds/dragon.png
+        
+        # Update theme.conf to use dragon.png as background
+        if [ -f "/usr/share/sddm/themes/Sugar-Candy/theme.conf" ]; then
+            sudo sed -i 's/Background=.*/Background="Backgrounds\/dragon.png"/' /usr/share/sddm/themes/Sugar-Candy/theme.conf
+            echo "✓ Dragon wallpaper set as SDDM background"
+        else
+            echo "⚠ Warning: SDDM theme.conf not found, wallpaper may not display"
+        fi
     fi
 fi
 
