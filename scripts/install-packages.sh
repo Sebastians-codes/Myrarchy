@@ -110,7 +110,8 @@ paru -S --needed --noconfirm \
     codespell \
     samba \
     xh \
-    zram-generator
+    zram-generator \
+    wireguard-tools
 
 echo "=================="
 echo "Package installation complete!"
