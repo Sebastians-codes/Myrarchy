@@ -46,8 +46,8 @@ deploy_config "$CONFIG_DIR/hypr" "$HOME/.config/hypr"
 # Deploy Waybar configs
 deploy_config "$CONFIG_DIR/waybar" "$HOME/.config/waybar"
 
-# Deploy Mako configs
-deploy_config "$CONFIG_DIR/mako" "$HOME/.config/mako"
+# Deploy Dunst configs
+deploy_config "$CONFIG_DIR/dunst" "$HOME/.config/dunst"
 
 # Deploy Wlogout configs
 deploy_config "$CONFIG_DIR/wlogout" "$HOME/.config/wlogout"

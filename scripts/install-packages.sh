@@ -59,12 +59,11 @@ paru -S --needed --noconfirm \
     hyprpicker \
     xdg-desktop-portal-hyprland \
     waybar \
-    mako \
+    dunst \
     wl-clipboard \
     grim \
     slurp \
     wlogout \
-    wofi \
     walker-bin \
     hyprsunset \
     grimblast-git \
@@ -106,7 +105,12 @@ paru -S --needed --noconfirm \
     noto-fonts-emoji \
     noto-fonts-extra \
     ttf-firacode-nerd \
-    ttf-noto-nerd
+    ttf-noto-nerd \
+    cloc \
+    codespell \
+    samba \
+    xh \
+    zram-generator
 
 echo "=================="
 echo "Package installation complete!"
