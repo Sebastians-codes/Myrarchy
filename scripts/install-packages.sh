@@ -37,7 +37,6 @@ paru -S --needed --noconfirm \
     base \
     base-devel \
     sbctl \
-    networkmanager \
     iwd \
     bluez \
     bluez-utils \
@@ -87,7 +86,6 @@ paru -S --needed --noconfirm \
     zellij \
     fzf \
     zoxide \
-    fastfetch \
     imv \
     discord \
     ffmpeg \
@@ -97,7 +95,6 @@ paru -S --needed --noconfirm \
     pamixer \
     wiremix \
     impala \
-    unclutter \
     ufw \
     power-profiles-daemon \
     sddm \
@@ -111,7 +108,12 @@ paru -S --needed --noconfirm \
     samba \
     xh \
     zram-generator \
-    wireguard-tools
+    wireguard-tools \
+    eza \
+    fd \
+    cheat \
+    posting \
+    gitui
 
 echo "=================="
 echo "Package installation complete!"
@@ -119,7 +121,6 @@ echo "=================="
 
 # Enable essential services
 echo "Enabling essential services..."
-sudo systemctl enable NetworkManager
 sudo systemctl enable iwd
 sudo systemctl enable bluetooth
 sudo systemctl enable sddm
